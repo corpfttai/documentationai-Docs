@@ -1,0 +1,87 @@
+---
+title: Introduction to AdaptAI
+description: Discover AdaptAI, the AI Employee Support Platform that automates employee support with instant answers, analytics, and integrations. Learn why it's the ideal solution for streamlining company support processes.
+---
+
+## Overview
+
+AdaptAI revolutionizes employee support by automating responses with AI, delivering instant answers to common queries, deep analytics on support trends, and seamless integrations with your existing tools. You get 24/7 availability without hiring more staff, secure data handling compliant with industry standards, and actionable insights to improve your processes. Streamline support and focus on what matters most to your team.
+
+## Key Features
+
+AdaptAI packs powerful capabilities into a simple platform. Explore the core features that make it indispensable for modern teams.
+
+<Columns cols={3}>
+  <Card title="24/7 AI Support" icon="clock" href="#quick-start">
+    Provide round-the-clock assistance to employees. The AI handles queries instantly, reducing response times from hours to seconds.
+  </Card>
+  <Card title="Powerful Analytics" icon="bar-chart-3" href="/configuration">
+    Gain insights into support patterns, popular questions, and resolution rates. Use dashboards to optimize your knowledge base.
+  </Card>
+  <Card title="Seamless Integrations" icon="plug" href="/authentication">
+    Connect with Slack, Microsoft Teams, Google Workspace, and more. Embed support directly into tools your team already uses.
+  </Card>
+  <Card title="Secure Data Storage" icon="shield" href="#security">
+    All data stays encrypted and compliant with GDPR, SOC 2. You control access and retention policies.
+  </Card>
+</Columns>
+
+## Quick Start
+
+Get up and running with AdaptAI in minutes. Follow these steps to deploy your first AI support agent.
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Create your account at `https://dashboard.example.com/signup`. Verify your email to access the dashboard.
+  </Step>
+  <Step title="Configure API Key" icon="key">
+    Generate an API key in the dashboard settings. Store it securely as `YOUR_API_KEY`.
+
+    <CodeGroup tabs="JavaScript,Python">
+      ```javascript
+      const adaptAI = new AdaptAI({ apiKey: 'YOUR_API_KEY' });
+      const response = await adaptAI.query('How do I reset my password?');
+      console.log(response.answer);
+      ```
+      ```python
+      from adapt_ai import AdaptAI
+      client = AdaptAI(api_key='YOUR_API_KEY')
+      response = client.query('How do I reset my password?')
+      print(response.answer)
+      ```
+    </CodeGroup>
+  </Step>
+  <Step title="Integrate with Tools" icon="plug">
+    Use webhooks or SDKs to connect AdaptAI to your chat apps. Test queries in the dashboard playground.
+  </Step>
+  <Step title="Monitor Analytics" icon="bar-chart-3">
+    Review initial interactions in the analytics tab. Refine your knowledge base based on real usage.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Ready to dive deeper? Head to the [Quickstart guide](/quickstart) for full setup details and advanced configurations.
+</Callout>
+
+## Next Steps
+
+Navigate to these resources to build on your foundation:
+
+<Columns cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Detailed installation and first deployment.
+  </Card>
+  <Card title="Authentication" icon="key" href="/authentication">
+    Secure your API access and manage tokens.
+  </Card>
+  <Card title="Configuration" icon="settings" href="/configuration">
+    Customize responses and integrations.
+  </Card>
+  <Card title="Changelog" icon="git-branch" href="/changelog">
+    Stay updated with the latest releases.
+  </Card>
+</Columns>
+
+<Expandable title="Why Choose AdaptAI?" default-open="true">
+  Unlike traditional helpdesks, AdaptAI learns from your data, scales effortlessly, and integrates natively. Teams report 70% faster resolutions and 50% reduced support tickets. Start small and grow as your needs evolve.
+</Expandable>

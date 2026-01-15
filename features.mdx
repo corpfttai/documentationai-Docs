@@ -1,0 +1,144 @@
+---
+title: Core Features
+description: Explore the main capabilities of AdaptAI, including instant AI responses and deep analytics for employee support. Understand how these features enhance your company's efficiency.
+---
+
+## Overview
+
+AdaptAI delivers core features that transform employee support. You get 24/7 AI-powered answers for instant resolutions, deep analytics to uncover support trends, and secure data storage to ensure compliance. These capabilities integrate seamlessly with your tools, reducing resolution times and boosting efficiency.
+
+<Columns cols={3}>
+  <Card title="24/7 AI Answers" icon="zap" href="#ai-answers">
+    Provide instant, accurate responses around the clock.
+  </Card>
+  <Card title="Deep Analytics" icon="bar-chart-3" href="#analytics">
+    Gain insights into support patterns and performance.
+  </Card>
+  <Card title="Secure Storage" icon="shield" href="#security">
+    Protect data with enterprise-grade compliance.
+  </Card>
+</Columns>
+
+## Implementing 24/7 AI-Powered Answers
+
+Set up AI-powered answers to handle employee queries instantly. AdaptAI uses natural language processing to match questions against your knowledge base.
+
+<Steps>
+  <Step title="Create Knowledge Base" icon="database">
+    Upload your HR policies, FAQs, and guides.
+
+````markdown
+```bash
+curl -X POST https://api.example.com/v1/knowledge-bases \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"name": "Employee Handbook", "documents": ["policy.pdf"]}'
+```
+````
+
+  </Step>
+  <Step title="Configure AI Agent" icon="bot">
+    Define response styles and escalation rules.
+
+    <CodeGroup tabs="JavaScript,Python">
+````javascript
+const agent = await adaptAI.createAgent({
+  name: 'HR Support',
+  knowledgeBaseId: 'kb_123',
+  maxTokens: 500
+});
+````
+````python
+agent = adapt_ai.create_agent(
+    name="HR Support",
+    knowledge_base_id="kb_123",
+    max_tokens=500
+)
+````
+    </CodeGroup>
+  </Step>
+  <Step title="Embed Chat Widget" icon="code">
+    Add the widget to your intranet or Slack.
+
+    ```html
+    <script src="https://cdn.example.com/adaptai.js"></script>
+    <adaptai-chat agent-id="agent_456"></adaptai-chat>
+    ```
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Test your AI agent with sample queries before going live to ensure accuracy.
+</Callout>
+
+## Utilizing Analytics for Support Insights
+
+Access powerful analytics to track support metrics. View dashboards for query volume, resolution rates, and user satisfaction.
+
+<Tabs>
+  <Tab title="Overview Dashboard" icon="activity">
+    Monitor real-time metrics.
+
+    ```json
+    {
+      "totalQueries": 1250,
+      "avgResolutionTime": "2.3min",
+      "satisfactionScore": 4.8
+    }
+    ```
+  </Tab>
+  <Tab title="Trend Analysis" icon="trending-up">
+    Identify seasonal patterns.
+
+    <Image
+      src="https://via.placeholder.com/600x300/040404/ffffff?text=Analytics+Trend+Chart"
+      alt="Trend analysis chart showing query volume over time"
+      width="600"
+      height="300"
+    />
+  </Tab>
+  <Tab title="Top Queries" icon="list">
+    Discover frequent issues.
+
+    | Query Topic     | Volume | Resolution Rate |
+    |-----------------|--------|-----------------|
+    | Benefits        | 320    | 95%             |
+    | Payroll         | 280    | 92%             |
+    | Leave Requests  | 150    | 98%             |
+  </Tab>
+</Tabs>
+
+## Managing Secure Data Storage and Compliance
+
+AdaptAI stores all interactions securely with encryption at rest and in transit. You maintain full control over data retention and access logs.
+
+<Expandable title="Advanced Security Configuration" default-open="false">
+
+Enable compliance features like GDPR export and audit trails.
+
+```javascript
+const config = await adaptAI.updateSecurity({
+  encryption: 'aes-256',
+  retentionDays: 365,
+  auditLogs: true
+});
+```
+
+Key parameters:
+
+<ParamField path="encryption" param-type="string" required="true">
+  Choose `aes-256` or `aes-512`.
+</ParamField>
+
+<ParamField header="X-Compliance-Region" param-type="string">
+  Set to `EU` or `US` for regional compliance.
+</ParamField>
+
+</Expandable>
+
+<Callout kind="alert">
+  Always use HTTPS endpoints and rotate your `API_KEY` every 90 days.
+</Callout>
+
+## Next Steps
+
+Integrate these features into your workflow. Start with [quickstart](/quickstart) for setup, then explore [authentication](/authentication) for secure access. These tools scale with your team, delivering measurable efficiency gains.

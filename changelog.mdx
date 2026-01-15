@@ -1,0 +1,148 @@
+---
+title: Changelog
+description: Track the latest updates and improvements to AdaptAI. Review recent changes to stay informed on new features and fixes.
+---
+
+## Changelog Overview
+
+Stay current with AdaptAI's evolution. You receive automatic updates for the core platform, but review this changelog to understand new capabilities, such as enhanced AI support and analytics. Key areas include AI-driven employee assistance, performance optimizations, and integration improvements.
+
+<Callout kind="info">
+  Subscribe to the AdaptAI RSS feed or join our GitHub notifications to get instant alerts on new releases.
+</Callout>
+
+## Recent Releases
+
+Review the latest versions below. Each release delivers value through new features, reliability fixes, and performance gains.
+
+<Update label="2024-10-15" description="v1.5.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added real-time AI analytics dashboard at `https://dashboard.example.com/analytics` to track support query trends and resolution times.
+- Introduced multi-language AI support for employee queries in English, Spanish, and French.
+
+## Improvements
+
+- Enhanced AI response accuracy by 25% using updated models.
+- Optimized data storage for faster query retrieval.
+
+## Bug Fixes
+
+- Fixed intermittent failures in webhook integrations with Slack and Microsoft Teams.
+
+</Update>
+
+<Update label="2024-09-25" description="v1.4.2" tags={["bugfix", "security"]}>
+
+## Bug Fixes
+
+- Resolved authentication token refresh issues preventing session timeouts.
+- Patched potential XSS vulnerabilities in custom knowledge base uploads.
+
+## Improvements
+
+- Improved logging for audit trails in compliance-heavy environments.
+
+</Update>
+
+<Update label="2024-09-10" description="v1.4.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Launched seamless integrations with Jira and Zendesk for ticket auto-routing.
+- Added custom AI personas configurable via the dashboard.
+
+## Breaking Changes
+
+- Updated API authentication to require JWT tokens instead of API keys. Migrate using the guide below.
+- Deprecated legacy `/v1/support` endpoint in favor of `/v2/ai-assist`.
+
+## Improvements
+
+- Reduced average response latency to `<100ms` for high-volume queries.
+
+</Update>
+
+## Upgrading to the Latest Version
+
+Follow these steps to ensure your AdaptAI instance runs the newest version. Back up your configuration first.
+
+<Steps>
+  <Step title="Backup Configuration" icon="database">
+
+    Export your settings from the dashboard.
+
+````bash
+curl -X GET "https://api.example.com/v2/config/export" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+````
+
+  </Step>
+  <Step title="Update SDK" icon="download">
+
+    Update your client SDK across platforms.
+
+    <Tabs>
+      <Tab title="npm (JavaScript)" icon="package">
+````bash
+npm update @adapt-ai/sdk@latest
+````
+      </Tab>
+      <Tab title="pip (Python)" icon="python">
+````bash
+pip install --upgrade adapt-ai-sdk
+````
+      </Tab>
+    </Tabs>
+
+  </Step>
+  <Step title="Migrate Auth" icon="shield">
+    <CodeGroup tabs="JavaScript,Python">
+````javascript
+// Old API key auth
+const client = new AdaptAIClient({ apiKey: 'YOUR_API_KEY' });
+
+// New JWT auth
+const client = new AdaptAIClient({ 
+  token: 'YOUR_JWT_TOKEN',
+  baseUrl: 'https://api.example.com/v2' 
+});
+````
+````python
+# Old
+client = AdaptAIClient(api_key="YOUR_API_KEY")
+
+# New
+client = AdaptAIClient(
+    jwt_token="YOUR_JWT_TOKEN",
+    base_url="https://api.example.com/v2"
+)
+````
+    </CodeGroup>
+  </Step>
+  <Step title="Verify Deployment" icon="check-circle">
+
+    Test a sample query.
+
+````bash
+curl -X POST "https://api.example.com/v2/ai-assist" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"query": "How do I reset my password?"}'
+````
+
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  After upgrading, check the analytics dashboard for migration insights. Contact support at `support@example.com` for assistance.
+</Callout>
+
+<Columns cols={2}>
+  <Card title="Migration Guide" icon="book-open" href="#upgrading-to-the-latest-version">
+    Detailed steps for v1.4+ changes.
+  </Card>
+  <Card title="API Reference" icon="code" href="/authentication">
+    Updated endpoints and auth methods.
+  </Card>
+</Columns>

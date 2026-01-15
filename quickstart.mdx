@@ -1,0 +1,166 @@
+---
+title: Quickstart Guide
+description: Set up your AdaptAI account and take your first steps to automate employee support. Follow these instructions to get up and running in minutes.
+---
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+<Callout kind="info">
+
+- A valid company email address
+- Access to your email inbox for verification
+- Admin permissions in your company's support tools (optional for basic setup)
+
+</Callout>
+
+No software installation required—everything runs in your browser.
+
+## Create and Verify Your Account
+
+Sign up for AdaptAI in under 2 minutes.
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+
+    Visit [https://dashboard.adapt.ai](https://dashboard.adapt.ai) and click **Sign Up**.
+
+    Enter your company email and create a secure password.
+
+  </Step>
+  <Step title="Verify Email" icon="mail">
+
+    Check your inbox for a verification email from AdaptAI.
+
+    Click the verification link to activate your account.
+
+  </Step>
+  <Step title="Complete Onboarding" icon="check-circle">
+
+    Log in and complete the quick onboarding form:
+
+    - Company name
+    - Team size (`<50` employees recommended for starters)
+    - Primary support channels
+
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+
+  Use a company domain email like `you@yourcompany.com` to unlock team features.
+
+</Callout>
+
+## Configure Initial AI Support Settings
+
+Customize your AI agent right after login.
+
+<Tabs>
+  <Tab title="Dashboard" icon="monitor">
+
+    1. Navigate to **Settings > AI Agent** in the sidebar.
+
+    2. Set your knowledge base URL (e.g., your internal wiki at `https://wiki.yourcompany.com`).
+
+    3. Enable integrations:
+
+````bash
+# Example: Slack integration command (run in your Slack workspace)
+/slash-command add-adapt-ai YOUR_API_KEY
+````
+
+  </Tab>
+  <Tab title="API Key" icon="key">
+
+    Generate your API key from **Settings > API**.
+
+    <ParamField header="Authorization" param-type="string" required="true">
+      Bearer token: `Bearer YOUR_API_KEY`
+    </ParamField>
+
+    Store it securely—treat like a password.
+
+  </Tab>
+</Tabs>
+
+## Launch Your First Support Query
+
+Test your setup with a real employee query.
+
+<CodeGroup tabs="JavaScript,Python,cURL">
+  ```javascript
+  const response = await fetch('https://api.adapt.ai/v1/query', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_API_KEY',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: 'How do I reset my password?',
+      context: 'employee-support'
+    })
+  });
+
+  const data = await response.json();
+  console.log(data.answer);
+  ```
+  ```python
+  import requests
+
+  headers = {
+      'Authorization': 'Bearer YOUR_API_KEY',
+      'Content-Type': 'application/json',
+    }
+
+  data = {
+      'query': 'How do I reset my password?',
+      'context': 'employee-support'
+  }
+
+  response = requests.post('https://api.adapt.ai/v1/query', json=data, headers=headers)
+  print(response.json()['answer'])
+  ```
+  ```bash
+  curl -X POST https://api.adapt.ai/v1/query \
+    -H "Authorization: Bearer YOUR_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "How do I reset my password?",
+      "context": "employee-support"
+    }'
+  ```
+</CodeGroup>
+
+Expected response:
+
+<Response tabs="200">
+```json
+{
+  "answer": "To reset your password, go to https://dashboard.yourcompany.com/forgot-password and enter your email. You'll receive a reset link within 60 seconds.",
+  "confidence": 0.95,
+  "sources": ["internal-wiki-password-reset"]
+}
+```
+</Response>
+
+## Next Steps
+
+<Columns cols={3}>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your API access and webhooks.
+  </Card>
+  <Card title="Integrations" icon="plug" href="/integrations">
+    Connect Slack, Microsoft Teams, and more.
+  </Card>
+  <Card title="Analytics" icon="bar-chart-3" href="/analytics">
+    Monitor query resolution and AI performance.
+  </Card>
+</Columns>
+
+<Callout kind="success">
+
+  Congratulations! Your AdaptAI instance is live. Employee support is now automated 24/7.
+
+</Callout>
